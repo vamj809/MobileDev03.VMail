@@ -4,7 +4,9 @@
              x:Class="MobileDev03.VMail.Views.AddMailPage"
              Title="¡Comunícate con el mundo!">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Enviar" Order="Primary" Priority="0" Command="{Binding SendMailCommand}"/>
+        <ToolbarItem Text="Adjunto" Order="Primary" Priority="0" Icon="AttachmentWhiteIcon"/>
+        <ToolbarItem Text="Enviar" Order="Primary" Priority="1" Icon="SendIcon" Command="{Binding SendMailCommand}"/>
+        <ToolbarItem Text="Otra Opción" Order="Secondary" Priority="2"/>
     </ContentPage.ToolbarItems>
     <Grid Padding="10"
                     RowDefinitions="Auto,Auto,Auto,*"
@@ -15,7 +17,7 @@
                 HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
             <Entry Text="{Binding Recipient}"
                 HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Label Text="\/"
+            <Image Source="ChevronIcon" WidthRequest="20" HeightRequest="15"
                 HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
 
@@ -25,7 +27,7 @@
                 HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
             <Entry Text="{Binding Sender}"
                 HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Label Text="\/"
+            <Image Source="ChevronIcon" WidthRequest="20" HeightRequest="15"
                 HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
 

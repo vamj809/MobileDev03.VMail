@@ -12,6 +12,10 @@ namespace MobileDev03.VMail.Models
             Subject = subject;
             Body = body;
             CreationDate = DateTime.Now;
+
+            //Conditional Format
+            IsFavorite = false;
+            HasAttachments = false;
         }
 
         public string Sender { get; set; }
@@ -21,5 +25,19 @@ namespace MobileDev03.VMail.Models
         public DateTime CreationDate { get; }
 
         public char SenderInitial => Sender[0];
+
+        public string FormattedCreationDate {
+            get {
+                if (CreationDate.Date == DateTime.Now.Date)
+                    return CreationDate.ToString("hh:mm tt");
+                else if(CreationDate.Year == DateTime.Now.Year)
+                    return CreationDate.ToString("MMM dd");
+                return CreationDate.ToString("dd/MM/yyyy");
+            }
+        }
+
+        public bool IsFavorite { get; set; }
+
+        public bool HasAttachments { get; set; }
     }
 }

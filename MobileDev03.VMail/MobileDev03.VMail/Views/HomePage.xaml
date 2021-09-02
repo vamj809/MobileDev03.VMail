@@ -1,68 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="MobileDev03.VMail.Views.HomePage"
-             xmlns:viewModels="clr-namespace:MobileDev03.VMail.ViewModels"
-             x:Name="homePage"
-             Title="VMail: ¡Correos Victoriosos!">
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="MobileDev03.VMail.Views.HomePage"
+            xmlns:viewModels="clr-namespace:MobileDev03.VMail.ViewModels"
+            x:Name="homePage" 
+            Title="VMail: Enviados">
     <ContentPage.BindingContext>
         <viewModels:HomeViewModel/>
     </ContentPage.BindingContext>
+    
+    <NavigationPage.TitleView>
+        <Image Source="MenuIcon" HorizontalOptions="Start" VerticalOptions="FillAndExpand" WidthRequest="20" HeightRequest="20"/>
+    </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Nuevo" Order="Primary" Priority="0" Command="{Binding GoToAddMailPageCommand}"/>
+        <ToolbarItem Text="Buscar" Order="Primary" Priority="0" Icon="SearchIcon"/>
     </ContentPage.ToolbarItems>
-    <CollectionView ItemsSource="{Binding Mails}" SelectedItem="{Binding SelectedMail}" SelectionMode="Single">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <SwipeView>
-                    <SwipeView.RightItems>
-                        <SwipeItem
-                            Text="Borrar"
-                            BackgroundColor="LightPink"
-                            Command="{Binding Source={x:Reference homePage}, Path=BindingContext.DeleteMailCommand}"
-                            CommandParameter="{Binding}"/>
-                    </SwipeView.RightItems>
-                    <Grid Padding="10" BackgroundColor="White"
-                          RowDefinitions="Auto,Auto,Auto"
-                          ColumnDefinitions="*,*,*,*">
-                        <BoxView Color="LightSkyBlue" Grid.Column="0" Grid.RowSpan="3"/>
-                        <Label 
-                            Grid.Row="0" Grid.RowSpan="3"
-                            Grid.Column="0" 
-                            FontSize="60"
-                            TextColor="White"
-                            HorizontalOptions="CenterAndExpand"
-                            VerticalOptions="CenterAndExpand"
-                            Text="{Binding SenderInitial}"/>
-                        <Label 
-                            Grid.Row="0" 
-                            Grid.Column="1" Grid.ColumnSpan="2"
-                            FontSize="Small" 
-                            HorizontalOptions="Start"
-                            LineBreakMode="TailTruncation"
-                            Text="{Binding Recipient}"/>
-                        <Label 
-                            Grid.Row="1" 
-                            Grid.Column="1" Grid.ColumnSpan="2"
-                            FontSize="Small" 
-                            HorizontalOptions="Start"
-                            LineBreakMode="TailTruncation"
-                            Text="{Binding Subject}" />
-                        <Label 
-                            Grid.Row="2"
-                            Grid.Column="1" Grid.ColumnSpan="3"
-                            FontSize="Small" 
-                            HorizontalOptions="Start"
-                            LineBreakMode="TailTruncation"
-                            Text="{Binding Body}" />
-                        <Label 
-                            Grid.Row="0"
-                            Grid.Column="3"
-                            FontSize="Small" HorizontalOptions="EndAndExpand"
-                            Text="{Binding CreationDate}" />
-                    </Grid>
-                </SwipeView>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+
+    <AbsoluteLayout>
+        <CollectionView ItemsSource="{Binding Mails}" SelectedItem="{Binding SelectedMail}" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItem
+                                    Text="Borrar"
+                                    BackgroundColor="LightPink"
+                                    Command="{Binding Source={x:Reference homePage}, Path=BindingContext.DeleteMailCommand}"
+                                    CommandParameter="{Binding}"/>
+                        </SwipeView.RightItems>
+                        <Grid Padding="10" BackgroundColor="White"
+                                    RowDefinitions="Auto,Auto,Auto"
+                                    ColumnDefinitions="*,*,*,*">
+                            <Frame BackgroundColor="LightSkyBlue" 
+                                        CornerRadius="90" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+                            </Frame>
+                            <!--<BoxView Color="LightSkyBlue" Grid.Column="0" Grid.RowSpan="3"/>-->
+                            <Label 
+                                    Grid.Row="0" Grid.RowSpan="3"
+                                    Grid.Column="0" 
+                                    FontSize="60"
+                                    TextColor="White"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    Text="{Binding SenderInitial}"/>
+                            <Label 
+                                    Grid.Row="0" 
+                                    Grid.Column="1" Grid.ColumnSpan="2"
+                                    FontSize="Small" 
+                                    HorizontalOptions="Start"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Recipient}"/>
+                            <Label 
+                                    Grid.Row="1" 
+                                    Grid.Column="1" Grid.ColumnSpan="2"
+                                    FontSize="Small" 
+                                    HorizontalOptions="Start"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Subject}" />
+                            <Label 
+                                    Grid.Row="2"
+                                    Grid.Column="1" Grid.ColumnSpan="3"
+                                    FontSize="Small" 
+                                    HorizontalOptions="Start"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Body}" />
+                            <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    FontSize="Small" HorizontalOptions="EndAndExpand"
+                                    Text="{Binding FormattedCreationDate}" />
+                            <Image Grid.Row="2" Grid.Column="3" HorizontalOptions="End" Source="StarIcon"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ImageButton Source="ComposeIcon" 
+            BackgroundColor="Transparent"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds=".95,.95,80,80"
+            Command="{Binding GoToAddMailPageCommand}"
+            ></ImageButton>
+    </AbsoluteLayout>
 </ContentPage>
