@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="MobileDev03.VMail.Views.AddMailPage">
+             x:Class="MobileDev03.VMail.Views.AddMailPage"
+             Title="¡Comunícate con el mundo!">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Enviar" Order="Primary" Priority="0" Command="{Binding SendMailCommand}"/>
     </ContentPage.ToolbarItems>

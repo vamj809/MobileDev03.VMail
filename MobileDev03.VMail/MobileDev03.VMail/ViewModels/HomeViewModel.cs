@@ -23,9 +23,9 @@ namespace MobileDev03.VMail.ViewModels
         }
 
         public ObservableCollection<Mail> Mails { get; set; } = new ObservableCollection<Mail>() {
-                new Mail("TheSender01","TheRecipient","TheSubject","SomeRandomBody"),
-                new Mail("BiasSender","Another Recipient","The Other Subject","Still SomeRandomBody")
-            };
+            //new Mail("TheSender01","TheRecipient","TheSubject","SomeRandomBody"),
+            //new Mail("BiasSender","Another Recipient","The Other Subject","Still SomeRandomBody")
+        };
 
         private ICommand GoToReadMailPageCommand { get; }
         public ICommand GoToAddMailPageCommand { get; }

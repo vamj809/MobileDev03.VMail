@@ -4,7 +4,7 @@
              x:Class="MobileDev03.VMail.Views.HomePage"
              xmlns:viewModels="clr-namespace:MobileDev03.VMail.ViewModels"
              x:Name="homePage"
-             >
+             Title="VMail: ¡Correos Victoriosos!">
     <ContentPage.BindingContext>
         <viewModels:HomeViewModel/>
     </ContentPage.BindingContext>
