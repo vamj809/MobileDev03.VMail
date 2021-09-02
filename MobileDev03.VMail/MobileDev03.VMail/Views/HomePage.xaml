@@ -8,7 +8,7 @@
         <viewModels:HomeViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Enviar" Order="Primary"/>
+        <ToolbarItem Text="Add" Order="Primary" Priority="0" Command="{Binding GoToAddMailPageCommand}"/>
     </ContentPage.ToolbarItems>
     <CollectionView ItemsSource="{Binding Mails}" SelectionMode="Single">
         <CollectionView.ItemTemplate>
@@ -16,17 +16,38 @@
                 <Grid Padding="10"
                       RowDefinitions="Auto,Auto,Auto"
                       ColumnDefinitions="*,*,*,*">
+                    <BoxView Color="LightSkyBlue" Grid.Column="0" Grid.RowSpan="3"/>
                     <Label 
                         Grid.Row="0" Grid.RowSpan="3"
-                        Grid.Column="0"
-                        Text="{Binding SenderInitial}" FontSize="Large" HorizontalOptions="StartAndExpand"/>
+                        Grid.Column="0" 
+                        FontSize="60"
+                        TextColor="White"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Text="{Binding SenderInitial}"/>
                     <Label 
                         Grid.Row="0" 
-                        Grid.Column="1" 
-                        Text="{Binding Recipient}" FontSize="Large" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Subject}" FontSize="Small" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Body}" FontSize="Small" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding CreationDate.TimeOfDay}" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+                        Grid.Column="1" Grid.ColumnSpan="2"
+                        FontSize="Small" 
+                        HorizontalOptions="Start"
+                        Text="{Binding Recipient}"/>
+                    <Label 
+                        Grid.Row="1" 
+                        Grid.Column="1" Grid.ColumnSpan="2"
+                        FontSize="Small" 
+                        HorizontalOptions="Start"
+                        Text="{Binding Subject}" />
+                    <Label 
+                        Grid.Row="2" 
+                        Grid.Column="1" Grid.ColumnSpan="3"
+                        FontSize="Small" 
+                        HorizontalOptions="Start"
+                        Text="{Binding Body}" />
+                    <Label 
+                        Grid.Row="0" 
+                        Grid.Column="3" 
+                        FontSize="Small" HorizontalOptions="EndAndExpand"
+                        Text="{Binding CreationDate.TimeOfDay}" />
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>

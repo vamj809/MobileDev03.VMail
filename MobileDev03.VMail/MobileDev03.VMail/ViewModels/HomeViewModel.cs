@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Windows.Input;
 using MobileDev03.VMail.Models;
+using MobileDev03.VMail.Views;
+using Xamarin.Forms;
 
 namespace MobileDev03.VMail.ViewModels
 {
@@ -13,8 +14,13 @@ namespace MobileDev03.VMail.ViewModels
                 new Mail("TheSender02","TheRecipient2","TheSubject","SomeRandomBody",DateTime.Now)
             };
 
+        public ICommand GoToAddMailPageCommand { get; }
         public HomeViewModel() {
+            GoToAddMailPageCommand = new Command(GoToAddMailPage);
+        }
 
+        private async void GoToAddMailPage() {
+            await Application.Current.MainPage.Navigation.PushAsync(new AddMailPage());
         }
     }
 }
