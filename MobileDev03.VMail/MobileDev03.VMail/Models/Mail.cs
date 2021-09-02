@@ -6,12 +6,12 @@ namespace MobileDev03.VMail.Models
 {
     public class Mail
     {
-        public Mail(string sender, string recipient, string subject, string body, DateTime creationDate) {
+        public Mail(string sender, string recipient, string subject, string body) {
             Sender = sender;
             Recipient = recipient;
             Subject = subject;
             Body = body;
-            CreationDate = creationDate;
+            CreationDate = DateTime.Now;
         }
 
         public string Sender { get; set; }

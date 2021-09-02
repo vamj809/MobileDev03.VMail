@@ -8,9 +8,9 @@
         <viewModels:HomeViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Order="Primary" Priority="0" Command="{Binding GoToAddMailPageCommand}"/>
+        <ToolbarItem Text="Nuevo" Order="Primary" Priority="0" Command="{Binding GoToAddMailPageCommand}"/>
     </ContentPage.ToolbarItems>
-    <CollectionView ItemsSource="{Binding Mails}" SelectionMode="Single">
+    <CollectionView ItemsSource="{Binding Mails}" SelectedItem="{Binding SelectedMail}" SelectionMode="Single">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="10"
@@ -30,24 +30,27 @@
                         Grid.Column="1" Grid.ColumnSpan="2"
                         FontSize="Small" 
                         HorizontalOptions="Start"
+                        LineBreakMode="TailTruncation"
                         Text="{Binding Recipient}"/>
                     <Label 
                         Grid.Row="1" 
                         Grid.Column="1" Grid.ColumnSpan="2"
                         FontSize="Small" 
                         HorizontalOptions="Start"
+                        LineBreakMode="TailTruncation"
                         Text="{Binding Subject}" />
                     <Label 
-                        Grid.Row="2" 
+                        Grid.Row="2"
                         Grid.Column="1" Grid.ColumnSpan="3"
                         FontSize="Small" 
                         HorizontalOptions="Start"
+                        LineBreakMode="TailTruncation"
                         Text="{Binding Body}" />
                     <Label 
-                        Grid.Row="0" 
-                        Grid.Column="3" 
+                        Grid.Row="0"
+                        Grid.Column="3"
                         FontSize="Small" HorizontalOptions="EndAndExpand"
-                        Text="{Binding CreationDate.TimeOfDay}" />
+                        Text="{Binding CreationDate}" />
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>

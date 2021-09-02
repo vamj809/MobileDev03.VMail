@@ -1,42 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="MobileDev03.VMail.Views.AddMailPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Enviar" Order="Primary" Priority="0" Command="{Binding SendMailCommand}"/>
-    </ContentPage.ToolbarItems>
-    <Grid Padding="10"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev03.VMail.Views.ReadMailPage">
+    <Grid Padding="10" BindingContext="{Binding SelectedMail}"
                     RowDefinitions="Auto,Auto,Auto,*"
                     ColumnDefinitions="*">
         <!-- Recipient Row -->
         <StackLayout Grid.Row="0" Orientation="Horizontal">
             <Label Text="A:"
                 HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding Recipient}"
+            <Label Text="{Binding Recipient}" FontSize="Medium" TextColor="Black"
                 HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Label Text="\/"
-                HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
 
         <!-- Sender Row -->
         <StackLayout Grid.Row="1" Orientation="Horizontal">
             <Label Text="De:"
                 HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding Sender}"
+            <Label Text="{Binding Sender}" FontSize="Medium" TextColor="Black"
                 HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Label Text="\/"
-                HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
 
         <!-- Subject Row -->
-        <Entry Grid.Row="2" Placeholder="Asunto" Text="{Binding Subject}"
-                HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+        <Label Grid.Row="2" Text="{Binding Subject}" FontSize="Medium" TextColor="Black"
+               HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+        
         <!-- Content Row -->
-        <Editor
-            Grid.Row="3"
+        <Label
+            Grid.Row="3" FontSize="Medium" TextColor="Black"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
-            Text="{Binding Body}"
-            Placeholder="Escriba el contenido de su correo..."/>
+            Text="{Binding Body}"/>
     </Grid>
 </ContentPage>
