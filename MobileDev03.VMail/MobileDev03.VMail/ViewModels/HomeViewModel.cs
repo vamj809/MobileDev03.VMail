@@ -29,9 +29,11 @@ namespace MobileDev03.VMail.ViewModels
 
         private ICommand GoToReadMailPageCommand { get; }
         public ICommand GoToAddMailPageCommand { get; }
+        public ICommand DeleteMailCommand { get; }
         public HomeViewModel() {
             GoToAddMailPageCommand = new Command(GoToAddMailPage);
             GoToReadMailPageCommand = new Command<Mail>(GoToReadMailPage);
+            DeleteMailCommand = new Command<Mail>(DeleteMail);
         }
 
         private async void GoToAddMailPage() {
@@ -40,6 +42,10 @@ namespace MobileDev03.VMail.ViewModels
 
         private async void GoToReadMailPage(Mail mail) {
             await Application.Current.MainPage.Navigation.PushAsync(new ReadMailPage(mail));
+        }
+
+        private void DeleteMail(Mail mail) {
+            Mails.Remove(mail);
         }
     }
 }

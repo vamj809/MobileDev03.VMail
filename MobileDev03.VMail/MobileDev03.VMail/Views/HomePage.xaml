@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="MobileDev03.VMail.Views.HomePage"
-             xmlns:viewModels="clr-namespace:MobileDev03.VMail.ViewModels" 
+             xmlns:viewModels="clr-namespace:MobileDev03.VMail.ViewModels"
+             x:Name="homePage"
              >
     <ContentPage.BindingContext>
         <viewModels:HomeViewModel/>
@@ -13,45 +14,54 @@
     <CollectionView ItemsSource="{Binding Mails}" SelectedItem="{Binding SelectedMail}" SelectionMode="Single">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid Padding="10"
-                      RowDefinitions="Auto,Auto,Auto"
-                      ColumnDefinitions="*,*,*,*">
-                    <BoxView Color="LightSkyBlue" Grid.Column="0" Grid.RowSpan="3"/>
-                    <Label 
-                        Grid.Row="0" Grid.RowSpan="3"
-                        Grid.Column="0" 
-                        FontSize="60"
-                        TextColor="White"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="CenterAndExpand"
-                        Text="{Binding SenderInitial}"/>
-                    <Label 
-                        Grid.Row="0" 
-                        Grid.Column="1" Grid.ColumnSpan="2"
-                        FontSize="Small" 
-                        HorizontalOptions="Start"
-                        LineBreakMode="TailTruncation"
-                        Text="{Binding Recipient}"/>
-                    <Label 
-                        Grid.Row="1" 
-                        Grid.Column="1" Grid.ColumnSpan="2"
-                        FontSize="Small" 
-                        HorizontalOptions="Start"
-                        LineBreakMode="TailTruncation"
-                        Text="{Binding Subject}" />
-                    <Label 
-                        Grid.Row="2"
-                        Grid.Column="1" Grid.ColumnSpan="3"
-                        FontSize="Small" 
-                        HorizontalOptions="Start"
-                        LineBreakMode="TailTruncation"
-                        Text="{Binding Body}" />
-                    <Label 
-                        Grid.Row="0"
-                        Grid.Column="3"
-                        FontSize="Small" HorizontalOptions="EndAndExpand"
-                        Text="{Binding CreationDate}" />
-                </Grid>
+                <SwipeView>
+                    <SwipeView.RightItems>
+                        <SwipeItem
+                            Text="Borrar"
+                            BackgroundColor="LightPink"
+                            Command="{Binding Source={x:Reference homePage}, Path=BindingContext.DeleteMailCommand}"
+                            CommandParameter="{Binding}"/>
+                    </SwipeView.RightItems>
+                    <Grid Padding="10" BackgroundColor="White"
+                          RowDefinitions="Auto,Auto,Auto"
+                          ColumnDefinitions="*,*,*,*">
+                        <BoxView Color="LightSkyBlue" Grid.Column="0" Grid.RowSpan="3"/>
+                        <Label 
+                            Grid.Row="0" Grid.RowSpan="3"
+                            Grid.Column="0" 
+                            FontSize="60"
+                            TextColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Text="{Binding SenderInitial}"/>
+                        <Label 
+                            Grid.Row="0" 
+                            Grid.Column="1" Grid.ColumnSpan="2"
+                            FontSize="Small" 
+                            HorizontalOptions="Start"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Recipient}"/>
+                        <Label 
+                            Grid.Row="1" 
+                            Grid.Column="1" Grid.ColumnSpan="2"
+                            FontSize="Small" 
+                            HorizontalOptions="Start"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Subject}" />
+                        <Label 
+                            Grid.Row="2"
+                            Grid.Column="1" Grid.ColumnSpan="3"
+                            FontSize="Small" 
+                            HorizontalOptions="Start"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Body}" />
+                        <Label 
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            FontSize="Small" HorizontalOptions="EndAndExpand"
+                            Text="{Binding CreationDate}" />
+                    </Grid>
+                </SwipeView>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
