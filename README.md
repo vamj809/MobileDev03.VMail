@@ -1,16 +1,20 @@
 # MobileDev03.VMail
-INS Mobile Development Asignación #03 - VMail: Plataforma simulada de correos inspirada en gmail.
+INS Mobile Development AsignaciÃ³n #03 - VMail: Plataforma simulada de correos inspirada en gmail.
 
-En su versión **v1.0** cuenta con funcionalidades para simular la gestión de correos:
+En su versiÃ³n **v1.0** cuenta con funcionalidades para simular la gestiÃ³n de correos:
 
-* Visualiza el historial de tus correos enviados.
+* Visualiza el historial de tus correos enviados:
+
 ![Alt text](Evidences/v1.0/List.png?raw=true "Pantalla Principal")
 
-* Envia correos de manera sencilla y rápida (simulación)
+* Envia correos de manera sencilla y rÃ¡pida (simulaciÃ³n):
+
 ![Alt text](Evidences/v1.0/Create.png?raw=true "Envia correos")
 
-* Lee y verifica el detalle de los correos en tu historial.
+* Lee y verifica el detalle de los correos en tu historial:
+
 ![Alt text](Evidences/v1.0/Read.png?raw=true "Lee correos")
 
-* ¿No te gustó? Puedes eliminar el correo de forma sencilla, al deslizar con el dedo hacia la izquierda
+* Â¿No te gustÃ³? Puedes eliminar el correo de forma sencilla, al deslizar con el dedo hacia la izquierda:
+
 ![Alt text](Evidences/v1.0/Delete.png?raw=true "Elimina correos")
