@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MobileDev03.VMail.Models
 {
@@ -24,14 +22,17 @@ namespace MobileDev03.VMail.Models
         public string Body { get; set; }
         public DateTime CreationDate { get; }
 
-        public char SenderInitial => Sender[0];
+        public char RecipientInitial => Recipient.ToUpper()[0];
 
         public string FormattedCreationDate {
             get {
-                if (CreationDate.Date == DateTime.Now.Date)
+                if (CreationDate.Date == DateTime.Now.Date) {
                     return CreationDate.ToString("hh:mm tt");
-                else if(CreationDate.Year == DateTime.Now.Year)
+                }
+                else if (CreationDate.Year == DateTime.Now.Year) {
                     return CreationDate.ToString("MMM dd");
+                }
+
                 return CreationDate.ToString("dd/MM/yyyy");
             }
         }

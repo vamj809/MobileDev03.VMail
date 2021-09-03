@@ -18,6 +18,7 @@ namespace MobileDev03.VMail.ViewModels
                 _selectedMail = value;
                 if (_selectedMail != null) {
                     GoToReadMailPageCommand.Execute(_selectedMail);
+                    _selectedMail = null;
                 }
             }
         }

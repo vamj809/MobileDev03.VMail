@@ -9,46 +9,53 @@
         <viewModels:HomeViewModel/>
     </ContentPage.BindingContext>
     
-    <NavigationPage.TitleView>
-        <Image Source="MenuIcon" HorizontalOptions="Start" VerticalOptions="FillAndExpand" WidthRequest="20" HeightRequest="20"/>
-    </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Buscar" Order="Primary" Priority="0" Icon="SearchIcon"/>
     </ContentPage.ToolbarItems>
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" Spacing="20">
+            <Image Source="MenuIcon" HorizontalOptions="Start" VerticalOptions="FillAndExpand" WidthRequest="20" HeightRequest="20"/>
+            <Label Text="Enviados" TextColor="White" FontSize="Large" FontAttributes="Bold"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
 
-    <AbsoluteLayout>
-        <CollectionView ItemsSource="{Binding Mails}" SelectedItem="{Binding SelectedMail}" SelectionMode="Single">
+    <AbsoluteLayout BackgroundColor="#eeeeee">
+        <CollectionView BackgroundColor="#eeeeee" ItemsSource="{Binding Mails}" SelectedItem="{Binding SelectedMail}" SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItem
                                     Text="Borrar"
-                                    BackgroundColor="LightPink"
+                                    BackgroundColor="#dc6b44"
                                     Command="{Binding Source={x:Reference homePage}, Path=BindingContext.DeleteMailCommand}"
                                     CommandParameter="{Binding}"/>
                         </SwipeView.RightItems>
-                        <Grid Padding="10" BackgroundColor="White"
+                        <Grid Margin="2" Padding="10" BackgroundColor="White"
                                     RowDefinitions="Auto,Auto,Auto"
-                                    ColumnDefinitions="*,*,*,*">
-                            <Frame BackgroundColor="LightSkyBlue" 
-                                        CornerRadius="90" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="FillAndExpand">
-                            </Frame>
+                                    ColumnDefinitions="*,*,*,*" ColumnSpacing="10">
+                            <!--<Ellipse Stroke="Red" StrokeThickness="4" Fill="LightSkyBlue"
+                                     BackgroundColor="Purple"
+                                     Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"/>-->
+                            <Frame BackgroundColor="LightSkyBlue" WidthRequest="30" HeightRequest="50"
+                                        CornerRadius="50" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"/>
                             <!--<BoxView Color="LightSkyBlue" Grid.Column="0" Grid.RowSpan="3"/>-->
                             <Label 
                                     Grid.Row="0" Grid.RowSpan="3"
                                     Grid.Column="0" 
-                                    FontSize="60"
+                                    FontSize="50"
                                     TextColor="White"
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand"
-                                    Text="{Binding SenderInitial}"/>
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    Text="{Binding RecipientInitial}"/>
                             <Label 
                                     Grid.Row="0" 
                                     Grid.Column="1" Grid.ColumnSpan="2"
-                                    FontSize="Small" 
+                                    FontSize="Small" FontAttributes="Bold"
                                     HorizontalOptions="Start"
                                     LineBreakMode="TailTruncation"
                                     Text="{Binding Recipient}"/>
@@ -65,13 +72,14 @@
                                     FontSize="Small" 
                                     HorizontalOptions="Start"
                                     LineBreakMode="TailTruncation"
+                                    Margin="0,0,30,0"
                                     Text="{Binding Body}" />
                             <Label 
                                     Grid.Row="0"
                                     Grid.Column="3"
                                     FontSize="Small" HorizontalOptions="EndAndExpand"
                                     Text="{Binding FormattedCreationDate}" />
-                            <Image Grid.Row="2" Grid.Column="3" HorizontalOptions="End" Source="StarIcon"/>
+                            <Image Grid.Row="2" Grid.Column="3" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" Source="StarIcon"/>
                         </Grid>
                     </SwipeView>
                 </DataTemplate>
