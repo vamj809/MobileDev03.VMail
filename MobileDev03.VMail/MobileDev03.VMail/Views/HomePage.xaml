@@ -24,6 +24,12 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItem 
+                                IconImageSource="{Binding FavoriteIcon}" 
+                                Command="{Binding Source={x:Reference homePage}, Path=BindingContext.SetFavoriteMailCommand}"
+                                CommandParameter="{Binding}"/>
+                        </SwipeView.LeftItems>
                         <SwipeView.RightItems>
                             <SwipeItem
                                     Text="Borrar"
@@ -34,16 +40,10 @@
                         <Grid Margin="2" Padding="10" BackgroundColor="White"
                                     RowDefinitions="Auto,Auto,Auto"
                                     ColumnDefinitions="*,*,*,*" ColumnSpacing="10">
-                            <!--<Ellipse Stroke="Red" StrokeThickness="4" Fill="LightSkyBlue"
-                                     BackgroundColor="Purple"
-                                     Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"/>-->
-                            <Frame BackgroundColor="LightSkyBlue" WidthRequest="30" HeightRequest="50"
-                                        CornerRadius="50" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"/>
-                            <!--<BoxView Color="LightSkyBlue" Grid.Column="0" Grid.RowSpan="3"/>-->
+                            <Frame BackgroundColor="LightSkyBlue" WidthRequest="40" HeightRequest="50"
+                                    CornerRadius="50" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>
                             <Label 
                                     Grid.Row="0" Grid.RowSpan="3"
                                     Grid.Column="0" 
@@ -79,7 +79,7 @@
                                     Grid.Column="3"
                                     FontSize="Small" HorizontalOptions="EndAndExpand"
                                     Text="{Binding FormattedCreationDate}" />
-                            <Image Grid.Row="2" Grid.Column="3" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" Source="StarIcon"/>
+                            <Image Grid.Row="2" Grid.Column="3" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Source="{Binding FavoriteIcon}"/>
                         </Grid>
                     </SwipeView>
                 </DataTemplate>
@@ -89,7 +89,6 @@
             BackgroundColor="Transparent"
             AbsoluteLayout.LayoutFlags="PositionProportional"
             AbsoluteLayout.LayoutBounds=".95,.95,80,80"
-            Command="{Binding GoToAddMailPageCommand}"
-            ></ImageButton>
+            Command="{Binding GoToAddMailPageCommand}"/>
     </AbsoluteLayout>
 </ContentPage>

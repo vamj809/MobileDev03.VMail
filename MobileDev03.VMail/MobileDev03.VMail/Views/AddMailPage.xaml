@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileDev03.VMail.Views.AddMailPage"
-             Title="¡Comunícate con el mundo!">
+             x:Name="addMailPage"
+             Title="Redactar">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Adjunto" Order="Primary" Priority="0" Icon="AttachmentWhiteIcon"/>
+        <ToolbarItem Text="Adjuntar imagen" Order="Primary" Priority="0" Icon="AttachmentWhiteIcon" Command="{Binding AttachImageCommand}"/>
         <ToolbarItem Text="Enviar" Order="Primary" Priority="1" Icon="SendIcon" Command="{Binding SendMailCommand}"/>
         <ToolbarItem Text="Otra Opción" Order="Secondary" Priority="2"/>
     </ContentPage.ToolbarItems>
     <Grid Padding="10"
-                    RowDefinitions="Auto,Auto,Auto,*"
+                    RowDefinitions="Auto,Auto,Auto,*,*"
                     ColumnDefinitions="*">
         <!-- Recipient Row -->
         <StackLayout Grid.Row="0" Orientation="Horizontal">
@@ -41,5 +42,28 @@
             VerticalOptions="FillAndExpand"
             Text="{Binding Body}"
             Placeholder="Escriba el contenido de su correo..."/>
+        <!-- Attachments Field-->
+        <CollectionView Grid.Row="4" Grid.Column="0" ItemsSource="{Binding Attachments}" SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItem
+                                    Text="REMOVER"
+                                    BackgroundColor="#dc6b44"
+                                    Command="{Binding Source={x:Reference addMailPage}, Path=BindingContext.RemoveAttachmentCommand}"
+                                    CommandParameter="{Binding}"/>
+                        </SwipeView.RightItems>
+                        <StackLayout Orientation="Horizontal" Padding="5" Spacing="10">
+                            <Image Source="ImagePlaceholder" WidthRequest="25" HeightRequest="25"/>
+                            <Label Text="{Binding FileName}" LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>

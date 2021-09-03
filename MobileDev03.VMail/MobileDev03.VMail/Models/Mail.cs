@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Xamarin.Essentials;
 
 namespace MobileDev03.VMail.Models
 {
@@ -13,7 +16,7 @@ namespace MobileDev03.VMail.Models
 
             //Conditional Format
             IsFavorite = false;
-            HasAttachments = false;
+            Attachments = new ObservableCollection<FileResult>();
         }
 
         public string Sender { get; set; }
@@ -36,9 +39,10 @@ namespace MobileDev03.VMail.Models
                 return CreationDate.ToString("dd/MM/yyyy");
             }
         }
-
         public bool IsFavorite { get; set; }
+        public string FavoriteIcon => IsFavorite ? "StarFilledIcon" : "StarIcon";
 
-        public bool HasAttachments { get; set; }
+        public bool HasAttachments => Attachments.Count != 0;
+        public ObservableCollection<FileResult> Attachments { get; set; }
     }
 }

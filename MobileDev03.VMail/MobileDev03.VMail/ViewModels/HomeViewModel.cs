@@ -11,9 +11,7 @@ namespace MobileDev03.VMail.ViewModels
     {
         private Mail _selectedMail;
         public Mail SelectedMail {
-            get {
-                return _selectedMail;
-            }
+            get => _selectedMail;
             set {
                 _selectedMail = value;
                 if (_selectedMail != null) {
@@ -31,10 +29,12 @@ namespace MobileDev03.VMail.ViewModels
         private ICommand GoToReadMailPageCommand { get; }
         public ICommand GoToAddMailPageCommand { get; }
         public ICommand DeleteMailCommand { get; }
+        public ICommand SetFavoriteMailCommand { get; }
         public HomeViewModel() {
             GoToAddMailPageCommand = new Command(GoToAddMailPage);
             GoToReadMailPageCommand = new Command<Mail>(GoToReadMailPage);
             DeleteMailCommand = new Command<Mail>(DeleteMail);
+            SetFavoriteMailCommand = new Command<Mail>(SetFavoriteMail);
         }
 
         private async void GoToAddMailPage() {
@@ -47,6 +47,11 @@ namespace MobileDev03.VMail.ViewModels
 
         private void DeleteMail(Mail mail) {
             Mails.Remove(mail);
+        }
+
+        private void SetFavoriteMail(Mail mail) {
+            mail.IsFavorite = !mail.IsFavorite;
+            _ = mail.FavoriteIcon;
         }
     }
 }
