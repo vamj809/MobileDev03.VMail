@@ -39,14 +39,14 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <SwipeView>
-                        <SwipeView.RightItems>
+                    <SwipeView BackgroundColor="White">
+                        <SwipeView.LeftItems>
                             <SwipeItem
                                     Text="VER"
                                     BackgroundColor="LightGreen"
                                     Command="{Binding Source={x:Reference readMailPage}, Path=BindingContext.ViewImageCommand}"
                                     CommandParameter="{Binding}"/>
-                        </SwipeView.RightItems>
+                        </SwipeView.LeftItems>
                         <StackLayout Orientation="Horizontal" Padding="5" Spacing="10">
                             <Image Source="ImagePlaceholder" WidthRequest="25" HeightRequest="25"/>
                             <Label Text="{Binding FileName}" LineBreakMode="TailTruncation"/>

@@ -19,10 +19,21 @@ En su versión **v1.0** cuenta con funcionalidades para simular la gestión de c
 
 ![Alt text](Evidences/v1.0/Delete.png?raw=true "Elimina correos")
 
-En su versión **v2.0** se actualizará el UI del sistema para imitar la presentación según el maestro, Google Mail:
+En su versión **v2.0** se actualiza el UI del sistema para imitar la presentación según el maestro, Google Mail:
 
 * Nuevo historial de correos enviados
+
 ![Alt text](Evidences/v2.0/NewUI.Home.png?raw=true "Lista correos")
 
-* Actualizada vista de creación de correos:
+* Actualizada vista de creación de correos con funciones para adjuntar una o varias imágenes:
+
 ![Alt text](Evidences/v2.0/NewUI.Compose.png?raw=true "Envia correos")
+
+* Además, cuentas con opciones para eliminar o visualizar una vista previa en pantalla completa con sólo deslizar hacia los lados:
+
+![Alt text](Evidences/v2.0/NewUI.Compose.Options.png?raw=true "Acciones con archivos adjuntos")
+![Alt text](Evidences/v2.0/NewUI.Compose.FullPreview.png?raw=true "Vista previa en pantalla completa")
+
+* **NUEVO:** Ahora tus correos se quedan guardados en tu celular aunque cierres la aplicación:
+
+![Alt text](Evidences/v2.0/NewUI.Home.Updated.png?raw=true "Persistencia de los datos")

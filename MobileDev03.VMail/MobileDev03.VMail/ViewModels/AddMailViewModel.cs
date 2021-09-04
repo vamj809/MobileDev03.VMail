@@ -1,6 +1,6 @@
 ﻿using MobileDev03.VMail.Models;
+using MobileDev03.VMail.Views;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -13,6 +13,7 @@ namespace MobileDev03.VMail.ViewModels
         public ICommand SendMailCommand { get; }
         public ICommand AttachImageCommand { get; }
         public ICommand RemoveAttachmentCommand { get; }
+        public ICommand ViewImageCommand { get; }
 
         public string Sender { get; set; }
         public string Recipient { get; set; }
@@ -24,6 +25,7 @@ namespace MobileDev03.VMail.ViewModels
             SendMailCommand = new Command(AddMailToCollection);
             AttachImageCommand = new Command(AttachImageToEmail);
             RemoveAttachmentCommand = new Command<FileResult>(RemoveAttachment);
+            ViewImageCommand = new Command<FileResult>(GoToImageViewerPage);
         }
 
         private ObservableCollection<Mail> _mails;
@@ -48,6 +50,9 @@ namespace MobileDev03.VMail.ViewModels
             else {
                 await Application.Current.MainPage.DisplayAlert("Error", "No se pudo adjuntar la imagen correctamente.", "OK");
             }
+        }
+        private async void GoToImageViewerPage(FileResult image) {
+            await Application.Current.MainPage.Navigation.PushAsync(new ImageViewerPage(image));
         }
 
         private void RemoveAttachment(FileResult image) {

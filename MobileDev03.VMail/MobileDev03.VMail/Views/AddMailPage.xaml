@@ -11,46 +11,50 @@
     </ContentPage.ToolbarItems>
     <Grid Padding="10"
                     RowDefinitions="Auto,Auto,Auto,3*,*"
-                    ColumnDefinitions="*">
+                    ColumnDefinitions="Auto,*,Auto">
         <!-- Recipient Row -->
-        <StackLayout Grid.Row="0" Orientation="Horizontal" BackgroundColor="Yellow" 
-                     HorizontalOptions="FillAndExpand">
-            <Label Text="A:"
-                HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding Recipient}"
-                HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Image Source="ChevronIcon" WidthRequest="20" HeightRequest="15"
-                HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
-        </StackLayout>
+        <Label Text="A:" Grid.Row="0" Grid.Column="0"
+            HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+        <Entry Text="{Binding Recipient}" Grid.Row="0" Grid.Column="1"
+            HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+        <Image Source="ChevronIcon" Grid.Row="0" Grid.Column="2" WidthRequest="20" HeightRequest="15"
+            HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
 
         <!-- Sender Row -->
-        <StackLayout Grid.Row="1" Orientation="Horizontal">
-            <Label Text="De:"
-                HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding Sender}"
-                HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Image Source="ChevronIcon" WidthRequest="20" HeightRequest="15"
-                HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
-        </StackLayout>
+        <Label Text="De:" Grid.Row="1" Grid.Column="0"
+            HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+        <Entry Text="{Binding Sender}"  Grid.Row="1" Grid.Column="1"
+            HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+        <Image Source="ChevronIcon" WidthRequest="20" HeightRequest="15" Grid.Row="1" Grid.Column="2" 
+            HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
 
         <!-- Subject Row -->
-        <Entry Grid.Row="2" Placeholder="Asunto" Text="{Binding Subject}"
+        <Entry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Placeholder="Asunto" Text="{Binding Subject}"
                 HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+        
         <!-- Content Row -->
         <Editor
-            Grid.Row="3"
+            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" 
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             Text="{Binding Body}"
             Placeholder="Escriba el contenido de su correo..."/>
+        
         <!-- Attachments Field-->
-        <CollectionView Grid.Row="4" ItemsSource="{Binding Attachments}" SelectionMode="Single" VerticalOptions="End">
+        <CollectionView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Attachments}" SelectionMode="Single" VerticalOptions="End">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <SwipeView>
+                    <SwipeView BackgroundColor="White">
+                        <SwipeView.LeftItems>
+                            <SwipeItem
+                                    Text="VER"
+                                    BackgroundColor="LightGreen"
+                                    Command="{Binding Source={x:Reference addMailPage}, Path=BindingContext.ViewImageCommand}"
+                                    CommandParameter="{Binding}"/>
+                        </SwipeView.LeftItems>
                         <SwipeView.RightItems>
                             <SwipeItem
                                     Text="REMOVER"
