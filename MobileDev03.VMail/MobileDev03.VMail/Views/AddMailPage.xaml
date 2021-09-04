@@ -10,10 +10,11 @@
         <ToolbarItem Text="Otra Opción" Order="Secondary" Priority="2"/>
     </ContentPage.ToolbarItems>
     <Grid Padding="10"
-                    RowDefinitions="Auto,Auto,Auto,*,*"
+                    RowDefinitions="Auto,Auto,Auto,3*,*"
                     ColumnDefinitions="*">
         <!-- Recipient Row -->
-        <StackLayout Grid.Row="0" Orientation="Horizontal">
+        <StackLayout Grid.Row="0" Orientation="Horizontal" BackgroundColor="Yellow" 
+                     HorizontalOptions="FillAndExpand">
             <Label Text="A:"
                 HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
             <Entry Text="{Binding Recipient}"
@@ -43,7 +44,7 @@
             Text="{Binding Body}"
             Placeholder="Escriba el contenido de su correo..."/>
         <!-- Attachments Field-->
-        <CollectionView Grid.Row="4" Grid.Column="0" ItemsSource="{Binding Attachments}" SelectionMode="Single">
+        <CollectionView Grid.Row="4" ItemsSource="{Binding Attachments}" SelectionMode="Single" VerticalOptions="End">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2"/>
             </CollectionView.ItemsLayout>

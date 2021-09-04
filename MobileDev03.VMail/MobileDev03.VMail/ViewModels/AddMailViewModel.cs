@@ -32,7 +32,7 @@ namespace MobileDev03.VMail.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Alerta!", "Debe especificar un emisor y receptor.", "OK");
             }
             else {
-                _mails.Add(new Mail(Sender, Recipient, Subject, Body));
+                _mails.Add(new Mail(Sender, Recipient, Subject, Body, Attachments));
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
         }

@@ -7,16 +7,16 @@ namespace MobileDev03.VMail.Models
 {
     public class Mail
     {
-        public Mail(string sender, string recipient, string subject, string body) {
+        public Mail(string sender, string recipient, string subject, string body, ObservableCollection<FileResult> attachments) {
             Sender = sender;
             Recipient = recipient;
             Subject = subject;
             Body = body;
+            Attachments = attachments;
             CreationDate = DateTime.Now;
 
             //Conditional Format
-            IsFavorite = false;
-            Attachments = new ObservableCollection<FileResult>();
+            IsFavorite = true;
         }
 
         public string Sender { get; set; }
