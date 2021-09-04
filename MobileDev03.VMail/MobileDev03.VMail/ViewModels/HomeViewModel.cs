@@ -21,16 +21,14 @@ namespace MobileDev03.VMail.ViewModels
             }
         }
 
-        public ObservableCollection<Mail> Mails { get; set; } = new ObservableCollection<Mail>() {
-            //new Mail("TheSender01","TheRecipient","TheSubject","SomeRandomBody"),
-            //new Mail("BiasSender","Another Recipient","The Other Subject","Still SomeRandomBody")
-        };
+        public ObservableCollection<Mail> Mails { get; set; }
 
         private ICommand GoToReadMailPageCommand { get; }
         public ICommand GoToAddMailPageCommand { get; }
         public ICommand DeleteMailCommand { get; }
         public ICommand SetFavoriteMailCommand { get; }
-        public HomeViewModel() {
+        public HomeViewModel(ObservableCollection<Mail> mails) {
+            Mails = mails;
             GoToAddMailPageCommand = new Command(GoToAddMailPage);
             GoToReadMailPageCommand = new Command<Mail>(GoToReadMailPage);
             DeleteMailCommand = new Command<Mail>(DeleteMail);

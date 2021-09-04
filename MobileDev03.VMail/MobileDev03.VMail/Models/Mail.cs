@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 
@@ -15,7 +14,7 @@ namespace MobileDev03.VMail.Models
             Attachments = attachments;
             CreationDate = DateTime.Now;
 
-            //Conditional Format
+            //Default values
             IsFavorite = true;
         }
 
@@ -24,8 +23,14 @@ namespace MobileDev03.VMail.Models
         public string Subject { get; set; }
         public string Body { get; set; }
         public DateTime CreationDate { get; }
+        public ObservableCollection<FileResult> Attachments { get; set; }
+        public bool IsFavorite { get; set; }
 
-        public char RecipientInitial => Recipient.ToUpper()[0];
+        //Helper Attributes
+        public char RecipientInitial {
+            get => Recipient.ToUpper()[0];
+            set => _ = value;
+        }
 
         public string FormattedCreationDate {
             get {
@@ -38,11 +43,16 @@ namespace MobileDev03.VMail.Models
 
                 return CreationDate.ToString("dd/MM/yyyy");
             }
+            set => _ = value;
         }
-        public bool IsFavorite { get; set; }
-        public string FavoriteIcon => IsFavorite ? "StarFilledIcon" : "StarIcon";
+        public string FavoriteIcon {
+            get => IsFavorite ? "StarFilledIcon" : "StarIcon";
+            set => _ = value;
+        }
 
-        public bool HasAttachments => Attachments.Count != 0;
-        public ObservableCollection<FileResult> Attachments { get; set; }
+        public bool HasAttachments {
+            get => Attachments.Count != 0;
+            set => _ = value;
+        }
     }
 }

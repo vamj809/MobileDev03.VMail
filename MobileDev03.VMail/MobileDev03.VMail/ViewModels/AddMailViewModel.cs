@@ -1,4 +1,5 @@
 ﻿using MobileDev03.VMail.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -33,6 +34,8 @@ namespace MobileDev03.VMail.ViewModels
             }
             else {
                 _mails.Add(new Mail(Sender, Recipient, Subject, Body, Attachments));
+                //Store changes locally
+                Preferences.Set("VMail.StoredMails", JsonConvert.SerializeObject(_mails));
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
         }

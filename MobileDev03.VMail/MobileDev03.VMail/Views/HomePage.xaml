@@ -5,10 +5,6 @@
             xmlns:viewModels="clr-namespace:MobileDev03.VMail.ViewModels"
             x:Name="homePage" 
             Title="VMail: Enviados">
-    <ContentPage.BindingContext>
-        <viewModels:HomeViewModel/>
-    </ContentPage.BindingContext>
-    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Buscar" Order="Primary" Priority="0" Icon="SearchIcon"/>
     </ContentPage.ToolbarItems>
@@ -74,7 +70,7 @@
                                     LineBreakMode="TailTruncation"
                                     Margin="0,0,30,0"
                                     Text="{Binding Body}" />
-                            <Image Grid.Row="0" Grid.Column="3" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Source="AttachmentGrayIcon" IsVisible="{Binding HasAttachments}"/>
+                            <Image Grid.Row="0" Grid.Column="3" WidthRequest="20" HeightRequest="20" HorizontalOptions="Start" Source="AttachmentGrayIcon" IsVisible="{Binding HasAttachments}"/>
                             <Label 
                                     Grid.Row="0"
                                     Grid.Column="3"
