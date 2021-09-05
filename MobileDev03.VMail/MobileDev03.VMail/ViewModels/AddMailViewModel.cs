@@ -1,4 +1,5 @@
 ﻿using MobileDev03.VMail.Models;
+using MobileDev03.VMail.Services;
 using MobileDev03.VMail.Views;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
@@ -20,12 +21,16 @@ namespace MobileDev03.VMail.ViewModels
         public string Subject { get; set; }
         public string Body { get; set; }
         public ObservableCollection<FileResult> Attachments { get; set; } = new ObservableCollection<FileResult>();
+
+        INotificationManager notificationManager;
         public AddMailViewModel(ObservableCollection<Mail> mails) {
             _mails = mails;
             SendMailCommand = new Command(AddMailToCollection);
             AttachImageCommand = new Command(AttachImageToEmail);
             RemoveAttachmentCommand = new Command<FileResult>(RemoveAttachment);
             ViewImageCommand = new Command<FileResult>(GoToImageViewerPage);
+
+            notificationManager = DependencyService.Get<INotificationManager>();
         }
 
         private ObservableCollection<Mail> _mails;
@@ -39,6 +44,16 @@ namespace MobileDev03.VMail.ViewModels
                 //Store changes locally
                 Preferences.Set("VMail.StoredMails", JsonConvert.SerializeObject(_mails));
                 await Application.Current.MainPage.Navigation.PopAsync();
+
+                //Additional Actions: Compose message using user-owned mail app.
+                EmailMessage emailDataMessage = new EmailMessage(Subject, Body, Recipient);
+                foreach(FileResult file in Attachments) {
+                    emailDataMessage.Attachments.Add(new EmailAttachment(file));
+                }
+                await Email.ComposeAsync(emailDataMessage);
+
+                //Additional Actions: Send push notification.
+                notificationManager.SendNotification(title: "VMail: Acción lograda", message: "Correo enviado");
             }
         }
 

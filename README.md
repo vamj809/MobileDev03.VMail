@@ -37,3 +37,18 @@ En su versión **v2.0** se actualiza el UI del sistema para imitar la presentaci
 * **NUEVO:** Ahora tus correos se quedan guardados en tu celular aunque cierres la aplicación:
 
 ![Alt text](Evidences/v2.0/NewUI.Home.Updated.png?raw=true "Persistencia de los datos")
+
+En su versión **v3.0** se agregan funciones que interactuan con su sistema:
+
+* Al enviar un correo, le permite utilizar la aplicación de su preferencia para terminar de redactarlo con todas las informaciones y adjuntos previos:
+
+![Alt text](Evidences/v3.0/Plus.ExternalMail.png?raw=true "Correo enviado a través de API")
+
+* Al realizar la acción anterior envia una notificación que puede ver desde la barra de su celular:
+
+![Alt text](Evidences/v3.0/Plus.PushNotification.png?raw=true "Push-Notification")
+
+* Aún así, queda disponible una copia local con toda la información que se envió a la aplicación externa:
+
+![Alt text](Evidences/v3.0/Plus.LocalSave.png?raw=true "Copia local")
+![Alt text](Evidences/v3.0/Plus.LocalSave.Details.png?raw=true "Copia local - detalle")
